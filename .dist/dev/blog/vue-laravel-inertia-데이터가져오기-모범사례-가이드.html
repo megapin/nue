@@ -1,0 +1,650 @@
+<!doctype html>
+
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+<title>Timbuktu jh / Vue 3 + Laravel Inertia &#xb370;&#xc774;&#xd130; &#xac00;&#xc838;&#xc624;&#xae30; &#xbaa8;&#xbc94; &#xc0ac;&#xb840; &#xac00;&#xc774;&#xb4dc;</title>
+<meta name="generator" content="Nue v1.0.0-RC.2 (nuejs.org)">
+<meta name="date.updated" content="2025-02-05T16:28:10.931Z">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Timbuktu jh">
+<meta property="og:title" content="Vue 3 + Laravel Inertia &#xb370;&#xc774;&#xd130; &#xac00;&#xc838;&#xc624;&#xae30; &#xbaa8;&#xbc94; &#xc0ac;&#xb840; &#xac00;&#xc774;&#xb4dc;">
+<meta property="og:image" content="https://simple-blog.nuejs.org/img/og_emma.png">
+<meta name="nue:components" content=" ">
+<meta name="nue:include" content="content cards motion">
+<meta name="nue:globals" content="@global">
+<meta name="nue:libs" content="@library">
+<link rel="icon" type="image/jpg" href="/img/favicon.jpg">
+<style href="/@global/colors.css">:root {
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-500: #6b7280;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --main-500: #3b82f6;
+  --main-600: #2563eb;
+  --marker: #ffff7a;
+}
+</style>
+<style href="/@global/layout.css">*, :before, :after {
+  box-sizing: border-box;
+}
+
+ul, ol, figure, pre {
+  margin: 2em 0;
+}
+
+body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2% 5%;
+
+  & > header nav {
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    display: flex;
+
+    & > a:first-child {
+      background: url("/img/avatar-rounded.jpg") 0 / 2em no-repeat;
+      padding-left: 2.5em;
+    }
+
+    & a {
+      padding: 1em 0;
+    }
+  }
+
+  & article {
+    & > header {
+      margin-bottom: 2rem;
+    }
+
+    & > section {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  & > footer {
+    border-top: 1px solid var(--gray-200);
+    margin-top: 8rem;
+
+    & nav {
+      gap: .5em;
+      padding: 1rem 0;
+      display: flex;
+
+      & a {
+        opacity: .8;
+      }
+
+      & a:hover {
+        opacity: 1;
+      }
+
+      & a:nth-child(2) {
+        margin-left: auto;
+      }
+    }
+  }
+}
+</style>
+<style href="/@global/typography.css">body {
+  font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Segoe UI, Roboto;
+}
+
+h1 {
+  letter-spacing: -.03em;
+  font-size: 2.6rem;
+
+  &, & + p {
+    text-align: center;
+    text-wrap: balance;
+    max-width: 40rem;
+    margin: 0 auto .2em;
+  }
+
+  & + p {
+    margin-bottom: 2em;
+    font-size: 1.15em;
+    font-weight: 300;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  nav & {
+    color: var(--gray-900);
+    font-weight: 500;
+
+    &[aria-current] {
+      text-decoration: 2px underline var(--main-500);
+      text-underline-offset: 8px;
+    }
+  }
+}
+
+p, li {
+  color: var(--gray-500);
+  line-height: 1.65;
+
+  & strong {
+    color: var(--gray-800);
+  }
+}
+</style>
+<style href="/@library/cards.css">:root {
+  --pink-gradient: linear-gradient(#e879f9, #ec4899);
+  --blue-gradient: linear-gradient(#0ea5e9, #67e8f9);
+}
+
+.pink, .blue {
+  background-image: var(--pink-gradient);
+  border-radius: .8em;
+  margin: 1.5em 0 2em;
+  padding: 3em 0 0 3em;
+  overflow: hidden;
+
+  & pre {
+    margin: 0;
+    padding: 2em;
+  }
+
+  & > * {
+    border-radius: .6em 0 0;
+  }
+}
+
+.blue {
+  background-image: var(--blue-gradient);
+}
+</style>
+<style href="/@library/content.css">article a {
+  text-decoration: underline var(--main-500) 1px;
+  text-underline-offset: 3px;
+  color: var(--gray-800);
+  font-weight: 500;
+
+  &:hover {
+    text-decoration-color: var(--main-600);
+    color: #000;
+    text-decoration-thickness: 2px;
+  }
+}
+
+h2 {
+  color: var(--gray-900);
+  margin: 4em 0 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+li {
+  text-wrap: balance;
+  margin-bottom: 1em;
+}
+
+pre {
+  --glow-padding: 2em;
+  font-size: 105%;
+}
+
+img, pre {
+  border-radius: 8px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+blockquote {
+  border-left: 5px solid var(--gray-900);
+  text-wrap: balance;
+  margin: 2.5em 0;
+  padding-left: 1.5em;
+
+  & p {
+    color: var(--gray-900);
+    font-size: 140%;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  & strong {
+    background-color: var(--marker);
+    font-weight: inherit;
+    margin-inline: -.2em;
+    padding: .1em .2em;
+  }
+}
+</style>
+<style href="/@library/motion.css">header, h1, h1 + p, h1 + p + * {
+  filter: none;
+  opacity: 1;
+  transition: opacity .5s, filter .7s;
+
+  @starting-style {
+    & {
+      filter: blur(10px);
+      opacity: 0;
+    }
+  }
+}
+
+h1 {
+  transition-delay: .1s;
+}
+
+h1 + p {
+  transition-delay: .2s;
+}
+
+h1 + p + * {
+  transition-delay: .4s;
+}
+
+article {
+  view-transition-name: article;
+}
+
+::view-transition-old(article) {
+  transition: all .8s;
+  transform: scale(1.2)translateY(2em);
+}
+</style>
+<link href="/@nue/syntax.css" rel="stylesheet">
+<script src="/@nue/hotreload.js" type="module"></script>
+<script src="/@nue/view-transitions.js" type="module"></script>
+    
+  </head>
+
+  <body>
+    
+    <header>
+  <nav><a href="/">Timbuktu jh</a>
+<a href="/contact/">Contact</a></nav>
+</header>
+    
+    <main>
+    
+
+    <article>
+      <header>
+  <h1>Vue 3 + Laravel Inertia &#xb370;&#xc774;&#xd130; &#xac00;&#xc838;&#xc624;&#xae30; &#xbaa8;&#xbc94; &#xc0ac;&#xb840; &#xac00;&#xc774;&#xb4dc;</h1>
+  <p>
+    <time datetime="2025-02-05T16:28:10.918Z">February 6, 2025</time> &#x2022; Content by AI &#x2022;
+    Photo credits: <a href="//dribbble.com/"></a>
+  </p>
+
+  <img width="1000" height="800" src="/img/og.jpg" alt="Hero image for Vue 3 + Laravel Inertia &#xb370;&#xc774;&#xd130; &#xac00;&#xc838;&#xc624;&#xae30; &#xbaa8;&#xbc94; &#xc0ac;&#xb840; &#xac00;&#xc774;&#xb4dc;">
+</header>
+      <section><h1>Vue 3 + Laravel Inertia &#xb370;&#xc774;&#xd130; &#xac00;&#xc838;&#xc624;&#xae30; &#xbaa8;&#xbc94; &#xc0ac;&#xb840; &#xac00;&#xc774;&#xb4dc;</h1></section>
+
+<section><h2>&#xb370;&#xc774;&#xd130; &#xac00;&#xc838;&#xc624;&#xae30; &#xc804;&#xb7b5; &#xbc0f; &#xc720;&#xc2a4;&#xcf00;&#xc774;&#xc2a4;</h2>
+<h3>1. &#xc2e4;&#xc2dc;&#xac04; &#xb370;&#xc774;&#xd130; &#xc5c5;&#xb370;&#xc774;&#xd2b8;&#xac00; &#xd544;&#xc694;&#xd55c; &#xacbd;&#xc6b0;</h3>
+<pre><code language="typescript"><sup>// types/PageData.ts</sup>
+<strong>interface</strong> PageData <i>{</i>
+  <b>id</b><i>:</i> <strong>number</strong><i>;</i>
+  <b>title</b><i>:</i> <strong>string</strong><i>;</i>
+  <b>content</b><i>:</i> <strong>string</strong><i>;</i>
+  <b>lastUpdated</b><i>:</i> <strong>string</strong><i>;</i>
+<i>}</i>
+
+<sup>// composables/useRealtimeData.ts</sup>
+<strong>import</strong> <i>{</i> ref<i>,</i> onMounted<i>,</i> onUnmounted <i>}</i> <strong>from</strong> <em>&apos;vue&apos;</em>
+<strong>import</strong> <i>{</i> router <i>}</i> <strong>from</strong> <em>&apos;@inertiajs/vue3&apos;</em>
+<strong>import</strong> type <i>{</i> PageData <i>}</i> <strong>from</strong> <em>&apos;@/types/PageData&apos;</em>
+
+<strong>export</strong> <strong>function</strong> <b>useRealtimeData</b><i>(</i><b>url</b><i>:</i> <strong>string</strong><i>,</i> <b>interval</b><i>:</i> <strong>number</strong> <i>=</i> <em>5000</em><i>)</i> <i>{</i>
+  <strong>const</strong> <b>data</b> <i>=</i> ref<i>&lt;</i>PageData <i>|</i> <strong>null</strong><i>&gt;</i><i>(</i><strong>null</strong><i>)</i>
+  <strong>const</strong> <b>loading</b> <i>=</i> ref<i>&lt;</i>boolean<i>&gt;</i><i>(</i><strong>false</strong><i>)</i>
+  <strong>const</strong> <b>error</b> <i>=</i> ref<i>&lt;</i><strong>string</strong> <i>|</i> <strong>null</strong><i>&gt;</i><i>(</i><strong>null</strong><i>)</i>
+  <strong>let</strong> <b>timer</b><i>:</i> <strong>number</strong> <i>|</i> <strong>null</strong> <i>=</i> <strong>null</strong>
+
+  <strong>const</strong> <b>fetchData</b> <i>=</i> <strong>async</strong> <i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+    loading<i>.</i><b>value</b> <i>=</i> <strong>true</strong>
+    <strong>try</strong> <i>{</i>
+      <strong>const</strong> <b>response</b> <i>=</i> <strong>await</strong> router<i>.</i><b>visit</b><i>(</i>url<i>,</i> <i>{</i>
+        <b>method</b><i>:</i> <em>&apos;get&apos;</em><i>,</i>
+        <b>preserveState</b><i>:</i> <strong>true</strong><i>,</i>
+        <b>preserveScroll</b><i>:</i> <strong>true</strong><i>,</i>
+        <b>only</b><i>:</i> <i>[</i><em>&apos;pageData&apos;</em><i>]</i>
+      <i>}</i><i>)</i>
+      data<i>.</i><b>value</b> <i>=</i> response<i>.</i>props<i>.</i>pageData
+    <i>}</i> <strong>catch</strong> <i>(</i>e<i>)</i> <i>{</i>
+      error<i>.</i><b>value</b> <i>=</i> <em>&apos;&#xb370;&#xc774;&#xd130; &#xc5c5;&#xb370;&#xc774;&#xd2b8; &#xc2e4;&#xd328;&apos;</em>
+      console<i>.</i><b>error</b><i>(</i><em>&apos;&#xc2e4;&#xc2dc;&#xac04; &#xb370;&#xc774;&#xd130; &#xc5c5;&#xb370;&#xc774;&#xd2b8; &#xc624;&#xb958;:&apos;</em><i>,</i> e<i>)</i>
+    <i>}</i> <strong>finally</strong> <i>{</i>
+      loading<i>.</i><b>value</b> <i>=</i> <strong>false</strong>
+    <i>}</i>
+  <i>}</i>
+
+  <b>onMounted</b><i>(</i><i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+    <b>fetchData</b><i>(</i><i>)</i>
+    <b>timer</b> <i>=</i> window<i>.</i><b>setInterval</b><i>(</i>fetchData<i>,</i> interval<i>)</i>
+  <i>}</i><i>)</i>
+
+  <b>onUnmounted</b><i>(</i><i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+    <strong>if</strong> <i>(</i>timer<i>)</i> <b>clearInterval</b><i>(</i>timer<i>)</i>
+  <i>}</i><i>)</i>
+
+  <strong>return</strong> <i>{</i> data<i>,</i> loading<i>,</i> error <i>}</i>
+<i>}</i>
+
+<sup>// &#xc0ac;&#xc6a9; &#xc608;&#xc2dc;</sup>
+<strong>const</strong> <i>{</i> data<i>,</i> loading<i>,</i> error <i>}</i> <i>=</i> <b>useRealtimeData</b><i>(</i><em>&apos;/api/live-data&apos;</em><i>)</i></code></pre>
+<h3>2. &#xb300;&#xb7c9; &#xb370;&#xc774;&#xd130; &#xcc98;&#xb9ac;&#xac00; &#xd544;&#xc694;&#xd55c; &#xacbd;&#xc6b0;</h3>
+<pre><code language="typescript"><sup>// stores/largeDataStore.ts</sup>
+<strong>import</strong> <i>{</i> defineStore <i>}</i> <strong>from</strong> <em>&apos;pinia&apos;</em>
+<strong>import</strong> <i>{</i> router <i>}</i> <strong>from</strong> <em>&apos;@inertiajs/vue3&apos;</em>
+
+<strong>interface</strong> DataChunk <i>{</i>
+  <b>page</b><i>:</i> <strong>number</strong>
+  <b>items</b><i>:</i> <b>any</b><i>[</i><i>]</i>
+  <b>total</b><i>:</i> <strong>number</strong>
+<i>}</i>
+
+<strong>export</strong> <strong>const</strong> <b>useLargeDataStore</b> <i>=</i> <b>defineStore</b><i>(</i><em>&apos;largeData&apos;</em><i>,</i> <i>{</i>
+  <b>state</b><i>:</i> <i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>(</i><i>{</i>
+    <b>chunks</b><i>:</i> <strong>new</strong> Map<i>&lt;</i><strong>number</strong><i>,</i> <b>any</b><i>[</i><i>]</i><i>&gt;</i><i>(</i><i>)</i><i>,</i>
+    <b>loading</b><i>:</i> <strong>false</strong><i>,</i>
+    <b>error</b><i>:</i> <strong>null</strong> as <strong>string</strong> <i>|</i> <strong>null</strong><i>,</i>
+    <b>totalPages</b><i>:</i> <em>0</em>
+  <i>}</i><i>)</i><i>,</i>
+
+  <b>actions</b><i>:</i> <i>{</i>
+    <strong>async</strong> <b>fetchChunk</b><i>(</i><b>page</b><i>:</i> <strong>number</strong><i>,</i> <b>pageSize</b><i>:</i> <strong>number</strong> <i>=</i> <em>100</em><i>)</i> <i>{</i>
+      <strong>if</strong> <i>(</i>this<i>.</i>chunks<i>.</i><b>has</b><i>(</i>page<i>)</i><i>)</i> <strong>return</strong>
+
+      this<i>.</i><b>loading</b> <i>=</i> <strong>true</strong>
+      <strong>try</strong> <i>{</i>
+        <strong>const</strong> <b>response</b> <i>=</i> <strong>await</strong> router<i>.</i><b>visit</b><i>(</i><i>`</i><i>/</i>api<i>/</i>data<i>?</i><b>page</b><i>=</i><i>&#x24;</i><i>{</i>page<i>}</i><i>&amp;</i><b>size</b><i>=</i><i>&#x24;</i><i>{</i>pageSize<i>}</i><i>`</i><i>,</i> <i>{</i>
+          <b>method</b><i>:</i> <em>&apos;get&apos;</em><i>,</i>
+          <b>preserveState</b><i>:</i> <strong>true</strong><i>,</i>
+          <b>only</b><i>:</i> <i>[</i><em>&apos;chunk&apos;</em><i>]</i>
+        <i>}</i><i>)</i>
+
+        <strong>const</strong> <b>chunk</b><i>:</i> <b>DataChunk</b> <i>=</i> response<i>.</i>props<i>.</i>chunk
+        this<i>.</i>chunks<i>.</i><strong>set</strong><i>(</i>page<i>,</i> chunk<i>.</i>items<i>)</i>
+        this<i>.</i><b>totalPages</b> <i>=</i> Math<i>.</i><b>ceil</b><i>(</i>chunk<i>.</i>total <i>/</i> pageSize<i>)</i>
+      <i>}</i> <strong>catch</strong> <i>(</i>error<i>)</i> <i>{</i>
+        this<i>.</i><b>error</b> <i>=</i> <em>&apos;&#xb370;&#xc774;&#xd130; &#xccad;&#xd06c; &#xb85c;&#xb529; &#xc2e4;&#xd328;&apos;</em>
+        console<i>.</i><b>error</b><i>(</i><em>&apos;&#xccad;&#xd06c; &#xb85c;&#xb529; &#xc624;&#xb958;:&apos;</em><i>,</i> error<i>)</i>
+      <i>}</i> <strong>finally</strong> <i>{</i>
+        this<i>.</i><b>loading</b> <i>=</i> <strong>false</strong>
+      <i>}</i>
+    <i>}</i>
+  <i>}</i>
+<i>}</i><i>)</i></code></pre>
+<h3>3. &#xc624;&#xd504;&#xb77c;&#xc778; &#xc9c0;&#xc6d0;&#xc774; &#xd544;&#xc694;&#xd55c; &#xacbd;&#xc6b0;</h3>
+<pre><code language="typescript"><sup>// services/offlineStorage.ts</sup>
+<strong>import</strong> <i>{</i> ref <i>}</i> <strong>from</strong> <em>&apos;vue&apos;</em>
+<strong>import</strong> localforage <strong>from</strong> <em>&apos;localforage&apos;</em>
+
+<strong>export</strong> <strong>async</strong> <strong>function</strong> <b>setupOfflineStorage</b><i>(</i><i>)</i> <i>{</i>
+  <strong>await</strong> localforage<i>.</i><b>config</b><i>(</i><i>{</i>
+    <b>name</b><i>:</i> <em>&apos;myApp&apos;</em><i>,</i>
+    <b>storeName</b><i>:</i> <em>&apos;offlineData&apos;</em>
+  <i>}</i><i>)</i>
+<i>}</i>
+
+<strong>export</strong> <strong>async</strong> <strong>function</strong> <b>saveForOffline</b><i>(</i><b>key</b><i>:</i> <strong>string</strong><i>,</i> <b>data</b><i>:</i> any<i>)</i> <i>{</i>
+  <strong>try</strong> <i>{</i>
+    <strong>await</strong> localforage<i>.</i><b>setItem</b><i>(</i>key<i>,</i> <i>{</i>
+      data<i>,</i>
+      <b>timestamp</b><i>:</i> <strong>new</strong> <b>Date</b><i>(</i><i>)</i><i>.</i><b>toISOString</b><i>(</i><i>)</i>
+    <i>}</i><i>)</i>
+  <i>}</i> <strong>catch</strong> <i>(</i>e<i>)</i> <i>{</i>
+    console<i>.</i><b>error</b><i>(</i><em>&apos;&#xc624;&#xd504;&#xb77c;&#xc778; &#xc800;&#xc7a5; &#xc2e4;&#xd328;:&apos;</em><i>,</i> e<i>)</i>
+    <strong>throw</strong> e
+  <i>}</i>
+<i>}</i>
+
+<strong>export</strong> <strong>async</strong> <strong>function</strong> <b>loadOfflineData</b><i>(</i><b>key</b><i>:</i> <strong>string</strong><i>)</i> <i>{</i>
+  <strong>try</strong> <i>{</i>
+    <strong>return</strong> <strong>await</strong> localforage<i>.</i><b>getItem</b><i>(</i>key<i>)</i>
+  <i>}</i> <strong>catch</strong> <i>(</i>e<i>)</i> <i>{</i>
+    console<i>.</i><b>error</b><i>(</i><em>&apos;&#xc624;&#xd504;&#xb77c;&#xc778; &#xb370;&#xc774;&#xd130; &#xb85c;&#xb4dc; &#xc2e4;&#xd328;:&apos;</em><i>,</i> e<i>)</i>
+    <strong>throw</strong> e
+  <i>}</i>
+<i>}</i></code></pre></section>
+
+<section><h2>&#xbcf4;&#xc548; &#xace0;&#xb824;&#xc0ac;&#xd56d;</h2>
+<h3>1. CSRF &#xbcf4;&#xd638;</h3>
+<pre><code language="php"><sup>// app/Http/Middleware/VerifyCsrfToken.php</sup>
+<strong>class</strong> VerifyCsrfToken extends Middleware
+<i>{</i>
+    protected <i>&#x24;</i><b>except</b> <i>=</i> <i>[</i>
+        <sup>// CSRF &#xd1a0;&#xd070; &#xac80;&#xc99d;&#xc774; &#xd544;&#xc694;&#xc5c6;&#xb294; &#xacbd;&#xb85c;</sup></code></pre>
+<h3>2. &#xb370;&#xc774;&#xd130; &#xc720;&#xd6a8;&#xc131; &#xac80;&#xc99d;</h3>
+<pre><code language="typescript"><sup>// types/validation.ts</sup>
+<strong>import</strong> <i>{</i> z <i>}</i> <strong>from</strong> <em>&apos;zod&apos;</em>
+
+<strong>export</strong> <strong>const</strong> <b>PageDataSchema</b> <i>=</i> z<i>.</i><b>object</b><i>(</i><i>{</i>
+  <b>id</b><i>:</i> z<i>.</i><strong>number</strong><i>(</i><i>)</i><i>,</i>
+  <b>title</b><i>:</i> z<i>.</i><strong>string</strong><i>(</i><i>)</i><i>.</i><b>min</b><i>(</i><em>1</em><i>)</i><i>.</i><b>max</b><i>(</i><em>200</em><i>)</i><i>,</i>
+  <b>content</b><i>:</i> z<i>.</i><strong>string</strong><i>(</i><i>)</i><i>,</i>
+  <b>lastUpdated</b><i>:</i> z<i>.</i><strong>string</strong><i>(</i><i>)</i><i>.</i><b>datetime</b><i>(</i><i>)</i>
+<i>}</i><i>)</i>
+
+<strong>export</strong> type <b>PageData</b> <i>=</i> z<i>.</i>infer<i>&lt;</i>typeof PageDataSchema<i>&gt;</i>
+
+<sup>// &#xb370;&#xc774;&#xd130; &#xac80;&#xc99d; &#xd568;&#xc218;</sup>
+<strong>export</strong> <strong>function</strong> <b>validatePageData</b><i>(</i><b>data</b><i>:</i> unknown<i>)</i><i>:</i> PageData <i>{</i>
+  <strong>return</strong> PageDataSchema<i>.</i><b>parse</b><i>(</i>data<i>)</i>
+<i>}</i></code></pre></section>
+
+<section><h2>&#xc131;&#xb2a5; &#xcd5c;&#xc801;&#xd654;</h2>
+<h3>1. &#xb370;&#xc774;&#xd130; &#xce90;&#xc2f1;</h3>
+<pre><code language="typescript"><sup>// utils/cache.ts</sup>
+<strong>export</strong> <strong>class</strong> Cache<i>&lt;</i>T<i>&gt;</i> <i>{</i>
+  private <b>cache</b> <i>=</i> <strong>new</strong> Map<i>&lt;</i><strong>string</strong><i>,</i> <i>{</i> <b>data</b><i>:</i> T<i>;</i> <b>timestamp</b><i>:</i> <strong>number</strong> <i>}</i><i>&gt;</i><i>(</i><i>)</i>
+  private <b>maxAge</b><i>:</i> <strong>number</strong>
+
+  <b>constructor</b><i>(</i><b>maxAgeMs</b><i>:</i> <strong>number</strong> <i>=</i> <em>5</em> <i>*</i> <em>60</em> <i>*</i> <em>1000</em><i>)</i> <i>{</i>
+    this<i>.</i><b>maxAge</b> <i>=</i> maxAgeMs
+  <i>}</i>
+
+  <strong>set</strong><i>(</i><b>key</b><i>:</i> <strong>string</strong><i>,</i> <b>data</b><i>:</i> T<i>)</i><i>:</i> <strong>void</strong> <i>{</i>
+    this<i>.</i>cache<i>.</i><strong>set</strong><i>(</i>key<i>,</i> <i>{</i>
+      data<i>,</i>
+      <b>timestamp</b><i>:</i> Date<i>.</i><b>now</b><i>(</i><i>)</i>
+    <i>}</i><i>)</i>
+  <i>}</i>
+
+  <strong>get</strong><i>(</i><b>key</b><i>:</i> <strong>string</strong><i>)</i><i>:</i> T <i>|</i> <strong>null</strong> <i>{</i>
+    <strong>const</strong> <b>item</b> <i>=</i> this<i>.</i>cache<i>.</i><strong>get</strong><i>(</i>key<i>)</i>
+    <strong>if</strong> <i>(</i><i>!</i>item<i>)</i> <strong>return</strong> <strong>null</strong>
+
+    <strong>if</strong> <i>(</i>Date<i>.</i><b>now</b><i>(</i><i>)</i> <i>-</i> item<i>.</i>timestamp <i>&gt;</i> this<i>.</i>maxAge<i>)</i> <i>{</i>
+      this<i>.</i>cache<i>.</i><b>delete</b><i>(</i>key<i>)</i>
+      <strong>return</strong> <strong>null</strong>
+    <i>}</i>
+
+    <strong>return</strong> item<i>.</i>data
+  <i>}</i>
+<i>}</i>
+
+<sup>// &#xc0ac;&#xc6a9; &#xc608;&#xc2dc;</sup>
+<strong>const</strong> <b>pageDataCache</b> <i>=</i> <strong>new</strong> Cache<i>&lt;</i>PageData<i>&gt;</i><i>(</i><em>5</em> <i>*</i> <em>60</em> <i>*</i> <em>1000</em><i>)</i> <sup>// 5&#xbd84; &#xce90;&#xc2dc;</sup></code></pre>
+<h3>2. &#xc694;&#xccad; &#xcd5c;&#xc801;&#xd654;</h3>
+<pre><code language="typescript"><sup>// utils/requestOptimizer.ts</sup>
+<strong>import</strong> <i>{</i> ref <i>}</i> <strong>from</strong> <em>&apos;vue&apos;</em>
+<strong>import</strong> type <i>{</i> Ref <i>}</i> <strong>from</strong> <em>&apos;vue&apos;</em>
+
+<strong>export</strong> <strong>function</strong> useDebounce<i>&lt;</i>T<i>&gt;</i><i>(</i><b>value</b><i>:</i> Ref<i>&lt;</i>T<i>&gt;</i><i>,</i> <b>delay</b><i>:</i> <strong>number</strong> <i>=</i> <em>300</em><i>)</i> <i>{</i>
+  <strong>const</strong> <b>debouncedValue</b> <i>=</i> <b>ref</b><i>(</i>value<i>.</i>value<i>)</i> as Ref<i>&lt;</i>T<i>&gt;</i>
+  <strong>let</strong> <b>timeout</b><i>:</i> <strong>number</strong>
+
+  <b>watch</b><i>(</i>value<i>,</i> <i>(</i>newValue<i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+    <b>clearTimeout</b><i>(</i>timeout<i>)</i>
+    <b>timeout</b> <i>=</i> <b>setTimeout</b><i>(</i><i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+      debouncedValue<i>.</i><b>value</b> <i>=</i> newValue
+    <i>}</i><i>,</i> delay<i>)</i>
+  <i>}</i><i>)</i>
+
+  <strong>return</strong> debouncedValue
+<i>}</i>
+
+<sup>// &#xc0ac;&#xc6a9; &#xc608;&#xc2dc;</sup>
+<strong>const</strong> <b>searchTerm</b> <i>=</i> <b>ref</b><i>(</i><em>&apos;&apos;</em><i>)</i>
+<strong>const</strong> <b>debouncedSearch</b> <i>=</i> <b>useDebounce</b><i>(</i>searchTerm<i>)</i>
+
+<b>watch</b><i>(</i>debouncedSearch<i>,</i> <i>(</i>value<i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+  <sup>// API &#xc694;&#xccad; &#xc218;&#xd589;</sup>
+<i>}</i><i>)</i></code></pre></section>
+
+<section><h2>&#xd14c;&#xc2a4;&#xd2b8; &#xc804;&#xb7b5;</h2>
+<h3>1. &#xcef4;&#xd3ec;&#xb10c;&#xd2b8; &#xd14c;&#xc2a4;&#xd2b8;</h3>
+<pre><code language="typescript"><sup>// tests/components/DataFetcher.test.ts</sup>
+<strong>import</strong> <i>{</i> mount <i>}</i> <strong>from</strong> <em>&apos;@vue/test-utils&apos;</em>
+<strong>import</strong> <i>{</i> describe<i>,</i> it<i>,</i> expect<i>,</i> vi <i>}</i> <strong>from</strong> <em>&apos;vitest&apos;</em>
+<strong>import</strong> DataFetcher <strong>from</strong> <em>&apos;@/components/DataFetcher.vue&apos;</em>
+
+<b>describe</b><i>(</i><em>&apos;DataFetcher&apos;</em><i>,</i> <i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+  <b>it</b><i>(</i><em>&apos;&#xb370;&#xc774;&#xd130;&#xb97c; &#xc131;&#xacf5;&#xc801;&#xc73c;&#xb85c; &#xac00;&#xc838;&#xc635;&#xb2c8;&#xb2e4;&apos;</em><i>,</i> <strong>async</strong> <i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+    <strong>const</strong> <b>wrapper</b> <i>=</i> <b>mount</b><i>(</i>DataFetcher<i>,</i> <i>{</i>
+      <b>global</b><i>:</i> <i>{</i>
+        <b>plugins</b><i>:</i> <i>[</i><b>createTestingPinia</b><i>(</i><i>{</i>
+          <b>createSpy</b><i>:</i> vi<i>.</i><strong>fn</strong>
+        <i>}</i><i>)</i><i>]</i>
+      <i>}</i>
+    <i>}</i><i>)</i>
+
+    <strong>await</strong> wrapper<i>.</i>vm<i>.</i><i>&#x24;</i><b>nextTick</b><i>(</i><i>)</i>
+    <b>expect</b><i>(</i>wrapper<i>.</i><b>text</b><i>(</i><i>)</i><i>)</i><i>.</i><b>toContain</b><i>(</i><em>&apos;&#xb370;&#xc774;&#xd130; &#xb85c;&#xb529; &#xc644;&#xb8cc;&apos;</em><i>)</i>
+  <i>}</i><i>)</i>
+
+  <b>it</b><i>(</i><em>&apos;&#xc5d0;&#xb7ec;&#xb97c; &#xc801;&#xc808;&#xd788; &#xcc98;&#xb9ac;&#xd569;&#xb2c8;&#xb2e4;&apos;</em><i>,</i> <strong>async</strong> <i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+    <sup>// &#xc5d0;&#xb7ec; &#xc0c1;&#xd669; &#xd14c;&#xc2a4;&#xd2b8;</sup>
+  <i>}</i><i>)</i>
+<i>}</i><i>)</i></code></pre>
+<h3>2. API &#xd1b5;&#xd569; &#xd14c;&#xc2a4;&#xd2b8;</h3>
+<pre><code language="php"><sup>// tests/Feature/PageDataTest.php</sup>
+<strong>class</strong> PageDataTest extends TestCase
+<i>{</i>
+    <strong>public</strong> <strong>function</strong> <b>test_can_fetch_page_data</b><i>(</i><i>)</i>
+    <i>{</i>
+        <i>&#x24;</i><b>response</b> <i>=</i> <i>&#x24;</i>this<i>-</i><i>&gt;</i><strong>get</strong><i>(</i><em>&apos;/api/page-data&apos;</em><i>)</i><i>;</i>
+
+        <i>&#x24;</i>response
+            <i>-</i><i>&gt;</i><b>assertStatus</b><i>(</i><em>200</em><i>)</i>
+            <i>-</i><i>&gt;</i><b>assertJsonStructure</b><i>(</i><i>[</i>
+                <em>&apos;title&apos;</em><i>,</i>
+                <em>&apos;content&apos;</em><i>,</i>
+                <em>&apos;lastUpdated&apos;</em>
+            <i>]</i><i>)</i><i>;</i>
+    <i>}</i>
+<i>}</i></code></pre></section>
+
+<section><h2>&#xc2e4;&#xc81c; &#xc0ac;&#xc6a9; &#xc0ac;&#xb840;</h2>
+<h3>1. &#xb300;&#xc2dc;&#xbcf4;&#xb4dc; &#xb370;&#xc774;&#xd130; &#xad00;&#xb9ac;</h3>
+<pre><code language="typescript"><sup>// composables/useDashboardData.ts</sup>
+<strong>export</strong> <strong>function</strong> <b>useDashboardData</b><i>(</i><i>)</i> <i>{</i>
+  <strong>const</strong> <b>store</b> <i>=</i> <b>usePageDataStore</b><i>(</i><i>)</i>
+  <strong>const</strong> <b>dataCache</b> <i>=</i> <strong>new</strong> Cache<i>&lt;</i>PageData<i>&gt;</i><i>(</i><i>)</i>
+
+  <strong>const</strong> <b>fetchDashboardData</b> <i>=</i> <strong>async</strong> <i>(</i><i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+    <strong>const</strong> <b>cachedData</b> <i>=</i> dataCache<i>.</i><strong>get</strong><i>(</i><em>&apos;dashboard&apos;</em><i>)</i>
+    <strong>if</strong> <i>(</i>cachedData<i>)</i> <strong>return</strong> cachedData
+
+    <strong>const</strong> <b>data</b> <i>=</i> <strong>await</strong> store<i>.</i><b>fetchPageData</b><i>(</i><em>&apos;/api/dashboard&apos;</em><i>)</i>
+    dataCache<i>.</i><strong>set</strong><i>(</i><em>&apos;dashboard&apos;</em><i>,</i> data<i>)</i>
+    <strong>return</strong> data
+  <i>}</i>
+
+  <strong>return</strong> <i>{</i>
+    fetchDashboardData
+  <i>}</i>
+<i>}</i></code></pre>
+<h3>2. &#xc2e4;&#xc2dc;&#xac04; &#xcc44;&#xd305; &#xad6c;&#xd604;</h3>
+<pre><code language="typescript"><sup>// composables/useChat.ts</sup>
+<strong>export</strong> <strong>function</strong> <b>useChat</b><i>(</i><b>roomId</b><i>:</i> <strong>string</strong><i>)</i> <i>{</i>
+  <strong>const</strong> <b>messages</b> <i>=</i> ref<i>&lt;</i><b>Message</b><i>[</i><i>]</i><i>&gt;</i><i>(</i><i>[</i><i>]</i><i>)</i>
+  <strong>const</strong> <b>echo</b> <i>=</i> <strong>new</strong> <b>Echo</b><i>(</i><i>{</i>
+    <b>broadcaster</b><i>:</i> <em>&apos;pusher&apos;</em><i>,</i>
+    <sup>// ... Pusher &#xc124;&#xc815;</sup>
+  <i>}</i><i>)</i>
+
+  echo<i>.</i><b>private</b><i>(</i><i>`</i>chat<i>.</i><i>&#x24;</i><i>{</i>roomId<i>}</i><i>`</i><i>)</i>
+    <i>.</i><b>listen</b><i>(</i><em>&apos;MessageSent&apos;</em><i>,</i> <i>(</i>e<i>:</i> MessageEvent<i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+      messages<i>.</i>value<i>.</i><b>push</b><i>(</i>e<i>.</i>message<i>)</i>
+    <i>}</i><i>)</i>
+
+  <strong>return</strong> <i>{</i>
+    messages
+  <i>}</i>
+<i>}</i></code></pre></section>
+
+<section><h2>&#xc5d0;&#xb7ec; &#xcc98;&#xb9ac; &#xd328;&#xd134;</h2>
+<h3>1. &#xc804;&#xc5ed; &#xc5d0;&#xb7ec; &#xcc98;&#xb9ac;</h3>
+<pre><code language="typescript"><sup>// plugins/errorHandler.ts</sup>
+<strong>export</strong> <strong>function</strong> <b>setupErrorHandling</b><i>(</i><b>app</b><i>:</i> App<i>)</i> <i>{</i>
+  app<i>.</i>config<i>.</i><b>errorHandler</b> <i>=</i> <i>(</i>err<i>,</i> vm<i>,</i> info<i>)</i> <i>=</i><i>&gt;</i> <i>{</i>
+    console<i>.</i><b>error</b><i>(</i><em>&apos;&#xc804;&#xc5ed; &#xc5d0;&#xb7ec;:&apos;</em><i>,</i> err<i>)</i>
+    <sup>// &#xc5d0;&#xb7ec; &#xb85c;&#xae45; &#xc11c;&#xbe44;&#xc2a4;&#xb85c; &#xc804;&#xc1a1;</sup>
+    errorLoggingService<i>.</i><b>log</b><i>(</i>err<i>,</i> info<i>)</i>
+  <i>}</i>
+<i>}</i>
+
+<sup>// &#xc0ac;&#xc6a9;&#xc790; &#xc815;&#xc758; &#xc5d0;&#xb7ec; &#xd074;&#xb798;&#xc2a4;</sup>
+<strong>export</strong> <strong>class</strong> ApiError extends Error <i>{</i>
+  <b>constructor</b><i>(</i>
+    <b>message</b><i>:</i> <strong>string</strong><i>,</i>
+    <strong>public</strong> <b>statusCode</b><i>:</i> <strong>number</strong><i>,</i>
+    <strong>public</strong> originalError<i>?</i><i>:</i> unknown
+  <i>)</i> <i>{</i>
+    <strong>super</strong><i>(</i>message<i>)</i>
+    this<i>.</i><b>name</b> <i>=</i> <em>&apos;ApiError&apos;</em>
+  <i>}</i>
+<i>}</i></code></pre>
+<h3>2. &#xc7ac;&#xc2dc;&#xb3c4; &#xb85c;&#xc9c1;</h3>
+<pre><code language="typescript"><sup>// utils/retry.ts</sup>
+<strong>export</strong> <strong>async</strong> <strong>function</strong> withRetry<i>&lt;</i>T<i>&gt;</i><i>(</i>
+  <strong>fn</strong><i>:</i> <i>(</i><i>)</i> <i>=</i><i>&gt;</i> Promise<i>&lt;</i>T<i>&gt;</i><i>,</i>
+  <b>maxAttempts</b><i>:</i> <strong>number</strong> <i>=</i> <em>3</em><i>,</i>
+  <b>delay</b><i>:</i> <strong>number</strong> <i>=</i> <em>1000</em>
+<i>)</i><i>:</i> Promise<i>&lt;</i>T<i>&gt;</i> <i>{</i>
+  <strong>let</strong> <b>lastError</b><i>:</i> Error
+
+  <strong>for</strong> <i>(</i><strong>let</strong> <b>attempt</b> <i>=</i> <em>1</em><i>;</i> attempt <i>&lt;</i><i>=</i> maxAttempts<i>;</i> attempt<i>+</i><i>+</i><i>)</i> <i>{</i>
+    <strong>try</strong> <i>{</i>
+      <strong>return</strong> <strong>await</strong> <strong>fn</strong><i>(</i><i>)</i>
+    <i>}</i> <strong>catch</strong> <i>(</i>error<i>)</i> <i>{</i>
+      <b>lastError</b> <i>=</i> error as Error
+      <strong>if</strong> <i>(</i><b>attempt</b> <i>=</i><i>=</i><i>=</i> maxAttempts<i>)</i> <strong>break</strong>
+      <strong>await</strong> <strong>new</strong> <b>Promise</b><i>(</i><b>resolve</b> <i>=</i><i>&gt;</i> <b>setTimeout</b><i>(</i>resolve<i>,</i> delay <i>*</i> attempt<i>)</i><i>)</i>
+    <i>}</i>
+  <i>}</i>
+
+  <strong>throw</strong> lastError
+<i>}</i>
+
+<sup>// &#xc0ac;&#xc6a9; &#xc608;&#xc2dc;</sup>
+<strong>const</strong> <b>data</b> <i>=</i> <strong>await</strong> <b>withRetry</b><i>(</i><i>(</i><i>)</i> <i>=</i><i>&gt;</i> <b>fetchPageData</b><i>(</i><em>&apos;/api/data&apos;</em><i>)</i><i>)</i></code></pre></section>
+
+<section><h2>&#xad8c;&#xc7a5; &#xc0ac;&#xd56d;</h2>
+<ol><li><p><strong>&#xb370;&#xc774;&#xd130; &#xb85c;&#xb529; &#xc0c1;&#xd0dc;</strong></p></li>
+<li><p><strong>&#xc5d0;&#xb7ec; &#xcc98;&#xb9ac;</strong></p></li>
+<li><p><strong>&#xc131;&#xb2a5; &#xcd5c;&#xc801;&#xd654;</strong></p></li>
+<li><p><strong>&#xd0c0;&#xc785; &#xc548;&#xc804;&#xc131;</strong></p></li>
+<li><p><strong>&#xd14c;&#xc2a4;&#xd2b8;</strong></p></li></ol></section>
+      
+    </article>
+
+    
+  </main>
+    <footer>
+  <nav><a href="/">&#xa9; Timbuktu jh</a>
+<a href="//x.com/tipiirai"><img src="/img/twitter.svg" width="22" height="22" alt="Twitter (X) profile"></a>
+<a href="//github.com/nuejs/nue/"><img src="/img/github.svg" width="22" height="22" alt="Github Projects"></a>
+<a href="//linkedin.com/in/tipiirai"><img src="/img/linkedin.svg" width="22" height="22" alt="LinkedIn profile"></a></nav>
+</footer>
+    
+  </body>
+
+</html>
