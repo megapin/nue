@@ -10,7 +10,7 @@ sections: true
 
 title_template: "Timbuktu swift / %s"
 og_image: /img/og_emma.png
-author: Timbuktu jh
+author: Timbuktu DEV
 favicon: /img/favicon.jpg
 description: Minimalist, designer, and UX developer
 port: 8083
