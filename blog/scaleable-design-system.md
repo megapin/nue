@@ -1,5 +1,4 @@
 ---
-<!-- title: Crafting a scaleable CSS design system -->
 title: Css 디자인시스템을 손보다.
 thumb: img/ui-thumb.png
 og: img/ui-1.png
