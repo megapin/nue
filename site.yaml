@@ -11,7 +11,7 @@ sections: true
 title_template: "Timbuctu arch / %s"
 og_image: /img/og_emma.png
 author: Timbuctu arch
-favicon: /img/favicon.jpg
+favicon: /img/favicon.svg
 description: Minimalist, designer, and UX developer
 port: 8083
 
